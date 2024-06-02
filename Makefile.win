@@ -1,0 +1,28 @@
+# Project: PacMan
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = pacman.o
+LINKOBJ  = pacman.o
+LIBS     = -L"D:/Apps/MinGW/lib" -L"D:/Apps/MinGW/mingw32/lib" -static-libstdc++ -static-libgcc -lopengl32 -lglu32 -lglut32
+INCS     = -I"D:/Apps/MinGW/include" -I"D:/Apps/MinGW/mingw32/include" -I"D:/Apps/MinGW/lib/gcc/mingw32/6.3.0/include"
+CXXINCS  = -I"D:/Apps/MinGW/include" -I"D:/Apps/MinGW/mingw32/include" -I"D:/Apps/MinGW/lib/gcc/mingw32/6.3.0/include" -I"D:/Apps/MinGW/lib/gcc/mingw32/6.3.0/include/c++"
+BIN      = PacMan.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+pacman.o: pacman.cpp
+	$(CPP) -c pacman.cpp -o pacman.o $(CXXFLAGS)
